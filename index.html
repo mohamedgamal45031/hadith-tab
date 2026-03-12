@@ -2,16 +2,40 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <link href="https://googleapis.com" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حديث اليوم</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="overlay"></div>
     <div class="container">
-        <div class="card">
-            <p id="hadith-text" class="hadith">"إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى..."</p>
-            <p id="hadith-source" class="source">رواه البخاري ومسلم</p>
+
+        <div class="card" id="hadith-card">
+            <div class="ornament">۩</div>
+            <span id="hadith-source" class="source-badge">جارٍ التحميل...</span>
+
+            <div class="skeleton" id="skeleton">
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line medium"></div>
+                <div class="skeleton-line long"></div>
+                <div class="skeleton-line short"></div>
+            </div>
+
+            <p id="hadith-text" class="hadith" style="display:none;"></p>
+            <div class="divider" id="divider" style="display:none;"></div>
+            <p id="explanation" class="explanation" style="display:none;"></p>
+            <span id="hadith-grade" class="grade-badge" style="display:none;"></span>
         </div>
+
+        <div class="actions">
+            <button id="btn-bookmark" class="action-btn" title="حفظ الحديث" aria-label="حفظ الحديث">🔖</button>
+            <button id="btn-copy"     class="action-btn" title="نسخ الحديث"  aria-label="نسخ الحديث">📋</button>
+            <button id="btn-share"    class="action-btn" title="مشاركة الحديث" aria-label="مشاركة الحديث">📤</button>
+        </div>
+
         <button id="refresh">حديث آخر ✨</button>
     </div>
     <script src="script.js"></script>
