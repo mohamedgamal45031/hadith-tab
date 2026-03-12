@@ -45,6 +45,7 @@ function showSkeleton() {
     document.getElementById('divider').style.display = 'none';
     document.getElementById('explanation').style.display = 'none';
     document.getElementById('hadith-grade').style.display = 'none';
+    document.getElementById('btn-tafsir').style.display = 'none';
     document.getElementById('hadith-source').textContent = 'جارٍ التحميل...';
 }
 
@@ -52,8 +53,13 @@ function hideSkeleton() {
     document.getElementById('skeleton').style.display = 'none';
     document.getElementById('hadith-text').style.display = 'block';
     document.getElementById('divider').style.display = 'block';
-    document.getElementById('explanation').style.display = 'block';
+    // explanation stays hidden until تفسير button is clicked
+    document.getElementById('explanation').style.display = 'none';
     document.getElementById('hadith-grade').style.display = 'inline-block';
+    const tafsirBtn = document.getElementById('btn-tafsir');
+    tafsirBtn.style.display = 'inline-block';
+    tafsirBtn.textContent = 'تفسير ▼';
+    tafsirBtn.classList.remove('open');
 }
 
 function populateCard(hadith) {
@@ -183,6 +189,14 @@ function updateBookmarkButton() {
     btn.classList.toggle('bookmarked', isBookmarked);
     btn.title = isBookmarked ? 'إلغاء الحفظ' : 'حفظ الحديث';
 }
+
+document.getElementById('btn-tafsir').addEventListener('click', () => {
+    const btn = document.getElementById('btn-tafsir');
+    const exp = document.getElementById('explanation');
+    const isOpen = btn.classList.toggle('open');
+    exp.style.display = isOpen ? 'block' : 'none';
+    btn.textContent = isOpen ? 'تفسير ▲' : 'تفسير ▼';
+});
 
 document.getElementById('refresh').addEventListener('click', () => fetchHadith(true));
 
